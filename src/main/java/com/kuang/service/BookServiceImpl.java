@@ -5,21 +5,21 @@ import com.kuang.pojo.Books;
 
 import java.util.List;
 
-public class BookServiceImpl implements BookMapper {
+public class BookServiceImpl implements BookService {
 
-    //    service调dao层 组合Dao
+    //调用dao层的操作，设置一个set接口，方便Spring管理
     private BookMapper bookMapper;
 
     public void setBookMapper(BookMapper bookMapper) {
         this.bookMapper = bookMapper;
     }
 
-    public int addBook(Books books) {
-        return bookMapper.addBook(books);
+    public int addBook(Books book) {
+        return bookMapper.addBook(book);
     }
 
-    public int deleteBook(int id) {
-        return bookMapper.deleteBook(id);
+    public int deleteBookById(int id) {
+        return bookMapper.deleteBookById(id);
     }
 
     public int updateBook(Books books) {
@@ -33,5 +33,4 @@ public class BookServiceImpl implements BookMapper {
     public List<Books> queryAllBook() {
         return bookMapper.queryAllBook();
     }
-
 }
