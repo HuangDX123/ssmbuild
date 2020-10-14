@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuang.dao.BookMapper">
+
+    <!--    插入一本书-->
+    <insert id="addBook" parameterType="Books">
+        insert into ssmbuild.books (bookName, bookCounts, detail)
+        values (#{bookName},#{bookCounts},#{detail});
+    </insert>
+
+    <!--    删除一本书-->
+    <delete id="deleteBookById" parameterType="int">
+        delete from ssmbuild.books where bookID = #{bookID}
+    </delete>
+
+    <!--    更新一本书-->
+    <update id="updateBook" parameterType="Book">
+        update ssmbuild.books
+        set bookName=#{bookName},bookCounts=#{bookCounts},detail=#{detail}
+        where bookID = #{bookID}
+    </update>
+
+    <!--    查询一本书-->
+    <select id="queryBookById" parameterType="Books">
+        select * from ssmbuild.books
+        where bookID = #{bookID}
+    </select>
+
+    <!--    查询全部书-->
+    <select id="queryAllBook" parameterType="Book">
+        select * from ssmbuild.books
+    </select>
+
+
+</mapper>
